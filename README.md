@@ -30,6 +30,7 @@ npm run client
 - use modern Redux (Redux Toolkit with Ducks pattern)
 - re-use GUI components from our [UI Library](https://gitlab.com/oliasoft-open-source/react-ui-library) (see the
  reference [Storybook](https://oliasoft-open-source.gitlab.io/react-ui-library/))
+- use CSS modules for styling
 
 ## Submission
 
