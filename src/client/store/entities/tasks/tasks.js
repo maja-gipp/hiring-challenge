@@ -24,13 +24,11 @@ const slice = createSlice({
   },
 });
 
-const {
+export const {
+  taskAdded,
   tasksRequested,
   tasksReceived,
   tasksRequestFailed,
-} = slice.actions;
-export const {
-  taskAdded
 } = slice.actions;
 export default slice.reducer;
 
