@@ -61,6 +61,7 @@ The main endpoint is already there, and you can simply test it by clicking `Load
     - link / button to details
 - `Main View` stories list should be sorted based on score in descendant order
 - Clicking on the story of interest (button / link from previous point) should result in navigating to `Details Page`
+- You should be able to navigate back to `Main View` from `Details Page`
 - `Detailed Page` of each story should consist of:
     - story title
     - story author
@@ -68,7 +69,6 @@ The main endpoint is already there, and you can simply test it by clicking `Load
     - score
     - URL
     - `Comments List` (if possible to get)
-- You should be able to navigate back to `Main View` from `Details Page`
 - `Comments List` should consist of:
     - comment author
     - comment creation date
