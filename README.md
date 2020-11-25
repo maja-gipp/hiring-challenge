@@ -75,6 +75,7 @@ The main endpoint is already there, and you can simply test it by clicking `Load
     - comment text
 - `Comments List` should be filtered based on date of entry in descendant order
 - Data should not be refreshed unless the user decides to. For example by clicking a load button or refreshing the site
+- All asynchronous data fetching should be addressed to the user
 
 #### Optional
 
