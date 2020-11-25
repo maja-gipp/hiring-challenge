@@ -14,7 +14,7 @@ const Stories = ({topStories, loading, storiesLoaded}) => {
       <Row>
         <Column width={200}>
           <Button
-            label="Load tasks"
+            label="Load stories"
             onClick={storiesLoaded}
             loading={loading}
             disabled={loading}

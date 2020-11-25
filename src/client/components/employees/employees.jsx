@@ -4,7 +4,7 @@ import {Button, Card, Heading, Column, Row} from '~gui-library';
 import {employeesLoaded} from "~store/entities/employees/employees";
 import styles from './employees.module.less';
 
-const Employees = ({list, loading, storiesLoaded}) => {
+const Employees = ({list, loading, employeesLoaded}) => {
   return (
     <Card
       heading={
