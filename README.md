@@ -42,22 +42,15 @@ npm run test
 
 ## Challenge tasks
 
+#### Please select one of the following challenges
+
 ### Frontend challenge
 
-TODO: Michael describe tasks for client only (using different APIs)
+To start frontend challenge, please open frontend-challenge.md
 
 ### Fullstack challenge
 
-Extend the application to add new endpoints for:
-
-- Fetching one specific employee
-  - by name
-  - by id
-- Provide methods to add, modify and delete an employee
-- Add a new API route for statistics and add methods to get
-  - number of employees
-  - number of hired employees (tips: look at the email address)
-  - number of employees per character in the alphabet - histogram
+To start fullstack challenge, please open fullstack-challenge.md
 
 ## Tips
 
@@ -70,5 +63,5 @@ Extend the application to add new endpoints for:
 
 ## Submission
 
-Submit your completed challenge by zipping it and emailing it to us (including the full git repo with history). 
+Submit your completed challenge by zipping it and emailing it to us (including the full git repo with history).
 Don't push it back to the repository :)

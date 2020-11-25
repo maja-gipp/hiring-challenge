@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux';
-import tasks from './tasks/tasks';
+import stories from './stories/stories';
+import employees from './employees/employees';
 
 export default combineReducers({
-  tasks
+  stories,
+  employees
 });
