@@ -1,5 +1,11 @@
 ### Frontend challenge
 
+#### Prework
+
+Before starting, please remove reference to `Employees` component in the `Main` view as it's not a scope of this task.
+
+#### Task
+
 You're given a list of top stories available from [Hacker News API](https://hackernews.api-docs.io/v0/overview).
 
 The main endpoint is already there, and you can simply test it by clicking `Load Stories` button.

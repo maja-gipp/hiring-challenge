@@ -1,5 +1,9 @@
 ### Fullstack challenge
 
+#### Prework
+
+Before starting, please remove reference to `Stories` component in the `Main` view as it's not a scope of this task. 
+
 #### Backend
 
 Extend the application to add new endpoints for:
@@ -18,7 +22,5 @@ Extend the application to add new endpoints for:
 Given the backend API, create a GUI using the API endpoints. 
 
 It should present a view of the list of employees and allow basic CRUD operations on this list.
-
-You can modify current skeleton view by removing reference to `Stories` component in the `Main` view. 
 
 
