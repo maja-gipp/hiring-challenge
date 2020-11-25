@@ -44,7 +44,37 @@ npm run test
 
 ### Frontend challenge
 
-TODO: Michael describe tasks for client only (using different APIs)
+You're given a list of top stories available from [Hacker News API](https://hackernews.api-docs.io/v0/overview).
+
+The main endpoint is already there, and you can simply test it by clicking `Load Stories` button.
+
+- in `Main View`, reduce the number of incoming top stories to 10 random entries from the list you received
+- Stories should get their details fetched
+- Each story in `Main View` should consist of:
+    - title
+    - type
+    - author
+    - creation date
+    - score
+    - comment count (if possible, hint: type of story)
+    - actual URL to the story
+    - link / button to details
+- `Main View` stories list should be sorted based on score in descendant order
+- Clicking on the story of interest (button / link from previous point) should result in navigating to `Details Page`
+- `Detailed Page` of each story should consist of:
+    - story title
+    - story author
+    - story creation date
+    - score
+    - URL
+    - `Comments List` (if possible to get)
+- You should be able to navigate back to `Main View` from `Details Page`
+- `Comments List` should consist of:
+    - comment author
+    - comment creation date
+    - comment text
+- `Comments List` should be filtered based on date of entry in descendant order
+- Data should not be refreshed unless the user decides to. For example by clicking a load button or refreshing the site
 
 ### Fullstack challenge
 
@@ -70,5 +100,5 @@ Extend the application to add new endpoints for:
 
 ## Submission
 
-Submit your completed challenge by zipping it and emailing it to us (including the full git repo with history). 
+Submit your completed challenge by zipping it and emailing it to us (including the full git repo with history).
 Don't push it back to the repository :)
