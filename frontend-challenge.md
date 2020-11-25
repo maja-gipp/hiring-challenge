@@ -39,7 +39,7 @@ The main endpoint is already there, and you can simply test it by clicking `Load
 - Data should not be refreshed unless the user decides to. For example by clicking a load button or refreshing the site
 - Use loading indicators whenever appropriate
 - Create `Chart View`
-- You should be able to navigate back to `Main View` from `Char View`
+- You should be able to navigate back to `Main View` from `Chart View`
 - Pick any charting library of your choice and plot the stories on Bar or Line chart
     - Y axis should be the score of the story
     - X axis should be either title or the ID of the story
