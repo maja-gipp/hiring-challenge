@@ -76,6 +76,14 @@ The main endpoint is already there, and you can simply test it by clicking `Load
 - `Comments List` should be filtered based on date of entry in descendant order
 - Data should not be refreshed unless the user decides to. For example by clicking a load button or refreshing the site
 
+#### Optional
+
+- Create `Chart View`
+- You should be able to navigate back to `Main View` from `Char View`
+- Pick any charting library of your choice and plot the stories on Bar or Line chart
+    - Y axis should be the score of the story
+    - X axis should be either title or the ID of the story
+
 ### Fullstack challenge
 
 Extend the application to add new endpoints for:
