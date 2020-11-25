@@ -1,5 +1,5 @@
 import fetchMock from "jest-fetch-mock";
-import tasks, {storiesLoaded, storiesRequested} from './stories';
+import stories, {storiesLoaded, storiesRequested} from './stories';
 import configureStore from '../../configureStore';
 
 fetchMock.enableMocks();
@@ -28,11 +28,11 @@ describe('stories', () => {
   */
 
   it('should handle initial state', () => {
-    expect(tasks(undefined, {})).toEqual({topStories: [], loading: false})
+    expect(stories(undefined, {})).toEqual({topStories: [], loading: false})
   });
 
   it('should set loading when requested', () => {
-    expect(tasks({topStories: [], loading: false}, storiesRequested))
+    expect(stories({topStories: [], loading: false}, storiesRequested))
       .toEqual({topStories: [], loading: true})
   });
 
@@ -41,12 +41,12 @@ describe('stories', () => {
   */
 
   test('it should load all stories', async () => {
-    const tasks = [{title: 'a', completed: false}];
-    fetch.mockResponseOnce(JSON.stringify(tasks));
+    const stories = [{title: 'a', completed: false}];
+    fetch.mockResponseOnce(JSON.stringify(stories));
 
     await store.dispatch(storiesLoaded());
 
     expect(storiesSlice().topStories).toHaveLength(1);
-    expect(storiesSlice().topStories).toEqual(tasks);
+    expect(storiesSlice().topStories).toEqual(stories);
   });
 });

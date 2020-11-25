@@ -1,4 +1,4 @@
-// We are keeping this simple. This in memory array works as our data store for this exersise
+// We are keeping this simple. This in memory array works as our data store for this exercise
 export const employees = [
   {
     name: 'Michal Pietrzyk',

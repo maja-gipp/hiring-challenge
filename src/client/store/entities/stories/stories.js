@@ -26,6 +26,7 @@ export const {
   storiesReceived,
   storiesRequestFailed,
 } = slice.actions;
+
 export default slice.reducer;
 
 const baseUrl = 'https://hacker-news.firebaseio.com/v0';
