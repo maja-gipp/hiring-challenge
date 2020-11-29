@@ -8,7 +8,7 @@ const OilRigs = ({list, loading, oilRigsLoaded}) => {
   return (
     <Card
       heading={
-        <Heading>List of oil sites</Heading>
+        <Heading>List of oil rigs</Heading>
       }
     >
       <Row>
