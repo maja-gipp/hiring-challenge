@@ -1,5 +1,5 @@
 import fetchMock from "jest-fetch-mock";
-import employees, {employeesLoaded, employeesRequested} from './employees';
+import oilRigs, {oilRigsLoaded, oilRigsRequested} from './oil-rigs';
 import configureStore from '../../configureStore';
 
 fetchMock.enableMocks();
@@ -13,7 +13,7 @@ describe('employees', () => {
     fetch.resetMocks();
   })
 
-  const employeesSlice = () => store.getState().entities.employees;
+  const oilRigsSlice = () => store.getState().entities.oilRigs;
 
   /*
     Hello world test
@@ -28,11 +28,11 @@ describe('employees', () => {
   */
 
   it('should handle initial state', () => {
-    expect(employees(undefined, {})).toEqual({list: [], loading: false})
+    expect(oilRigs(undefined, {})).toEqual({list: [], loading: false})
   });
 
   it('should set loading when requested', () => {
-    expect(employees({list: [], loading: false}, employeesRequested))
+    expect(oilRigs({list: [], loading: false}, oilRigsRequested()))
       .toEqual({list: [], loading: true})
   });
 });

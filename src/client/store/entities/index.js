@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import stories from './stories/stories';
-import employees from './employees/employees';
+import sites from './sites/sites';
+import oilRigs from './oil-rigs/oil-rigs';
 
 export default combineReducers({
-  stories,
-  employees
+  sites,
+  oilRigs,
 });

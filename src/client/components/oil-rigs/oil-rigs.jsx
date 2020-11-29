@@ -1,32 +1,32 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Card, Heading, Column, Row} from '~gui-library';
-import {storiesLoaded} from '~store/entities/stories/stories';
-import styles from './stories.module.less';
+import {oilRigsLoaded} from "~store/entities/oil-rigs/oil-rigs";
+import styles from './oil-rigs.module.less';
 
-const Stories = ({topStories, loading, storiesLoaded}) => {
+const OilRigs = ({list, loading, oilRigsLoaded}) => {
   return (
     <Card
       heading={
-        <Heading>Top Stories</Heading>
+        <Heading>List of oil sites</Heading>
       }
     >
       <Row>
         <Column width={200}>
           <Button
-            label="Load stories"
-            onClick={storiesLoaded}
+            label="Load oil rigs"
+            onClick={oilRigsLoaded}
             loading={loading}
             disabled={loading}
           />
         </Column>
         <Column>
-          <div className={styles.storiesList}>
-            {topStories.length ? (
+          <div className={styles.oilRigsList}>
+            {list.length ? (
               <ul>
-                {topStories.map((storyID, i) => (
+                {list.map((oilRig, i) => (
                   <li key={i}>
-                    <Card heading={storyID}/>
+                    {oilRig.id}
                   </li>
                 ))}
               </ul>
@@ -41,18 +41,19 @@ const Stories = ({topStories, loading, storiesLoaded}) => {
 }
 
 const mapStateToProps = ({entities}) => {
-  const {stories} = entities;
+  const {oilRigs} = entities;
   return {
-    loading: stories.loading,
-    topStories: stories.topStories
+    loading: oilRigs.loading,
+    list: oilRigs.list
   }
 };
+
 const mapDispatchToProps = {
-  storiesLoaded,
+  oilRigsLoaded,
 };
 
-const ConnectedStories = connect(
+const ConnectedOilRigs = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Stories);
-export {ConnectedStories as Stories};
+)(OilRigs);
+export {ConnectedOilRigs as OilRigs};
