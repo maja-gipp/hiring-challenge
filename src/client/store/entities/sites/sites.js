@@ -8,15 +8,15 @@ const slice = createSlice({
     list: [],
   },
   reducers: {
-    sitesRequested: (stories) => {
-      stories.loading = true;
+    sitesRequested: (sites) => {
+      sites.loading = true;
     },
-    sitesReceived: (stories, action) => {
-      stories.list = action.payload;
-      stories.loading = false;
+    sitesReceived: (sites, action) => {
+      sites.list = action.payload;
+      sites.loading = false;
     },
-    sitesRequestFailed: (stories) => {
-      stories.loading = false;
+    sitesRequestFailed: (sites) => {
+      sites.loading = false;
     },
   },
 });

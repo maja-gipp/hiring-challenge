@@ -8,15 +8,15 @@ const slice = createSlice({
     list: [],
   },
   reducers: {
-    oilRigsRequested: (stories) => {
-      stories.loading = true;
+    oilRigsRequested: (oilRigs) => {
+      oilRigs.loading = true;
     },
-    oilRigsReceived: (stories, action) => {
-      stories.list = action.payload;
-      stories.loading = false;
+    oilRigsReceived: (oilRigs, action) => {
+      oilRigs.list = action.payload;
+      oilRigs.loading = false;
     },
-    oilRigsRequestFailed: (stories) => {
-      stories.loading = false;
+    oilRigsRequestFailed: (oilRigs) => {
+      oilRigs.loading = false;
     },
   },
 });
