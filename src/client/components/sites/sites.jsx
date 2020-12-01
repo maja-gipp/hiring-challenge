@@ -1,32 +1,32 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Card, Heading, Column, Row} from '~gui-library';
-import {employeesLoaded} from "~store/entities/employees/employees";
-import styles from './employees.module.less';
+import {sitesLoaded} from "~store/entities/sites/sites";
+import styles from './sites.module.less';
 
-const Employees = ({list, loading, employeesLoaded}) => {
+const Sites = ({list, loading, sitesLoaded}) => {
   return (
     <Card
       heading={
-        <Heading>List of employees</Heading>
+        <Heading>List of oil sites</Heading>
       }
     >
       <Row>
         <Column width={200}>
           <Button
-            label="Load employees"
-            onClick={employeesLoaded}
+            label="Load sites"
+            onClick={sitesLoaded}
             loading={loading}
             disabled={loading}
           />
         </Column>
         <Column>
-          <div className={styles.employeesList}>
+          <div className={styles.sitesList}>
             {list.length ? (
               <ul>
-                {list.map((employee, i) => (
+                {list.map((site, i) => (
                   <li key={i}>
-                    {employee.name}
+                    {site.name}
                   </li>
                 ))}
               </ul>
@@ -41,18 +41,19 @@ const Employees = ({list, loading, employeesLoaded}) => {
 }
 
 const mapStateToProps = ({entities}) => {
-  const {employees} = entities;
+  const {sites} = entities;
   return {
-    loading: employees.loading,
-    list: employees.list
+    loading: sites.loading,
+    list: sites.list
   }
 };
+
 const mapDispatchToProps = {
-  employeesLoaded,
+  sitesLoaded,
 };
 
-const ConnectedEmployees = connect(
+const ConnectedSites = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Employees);
-export {ConnectedEmployees as Employees};
+)(Sites);
+export {ConnectedSites as Sites};
