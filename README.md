@@ -57,7 +57,6 @@ The main endpoints are already there, and you can simply test it by clicking `Lo
     - name
     - country name
     - list of oil rigs used
-- `Main View` stories list should be sorted based on score in descendant order
 - Clicking on the site of interest (button / link from previous point) should result in navigating to `Details Page`
 - You should be able to navigate back to `Main View` from `Details Page`
 - `Detailed Page` of each oil site should consist of:
