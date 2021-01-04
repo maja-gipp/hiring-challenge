@@ -6,4 +6,5 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules'],
+  transformIgnorePatterns: ["/node_modules/(?!gui-library)"]
 };
