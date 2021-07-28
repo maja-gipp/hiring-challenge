@@ -67,7 +67,7 @@
     "connected-react-router": "^6.9.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "gui-library": "git+https://gitlab.com/oliasoft-open-source/react-ui-library.git#258",
+    "gui-library": "git+https://gitlab.com/oliasoft-open-source/react-ui-library.git#378",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.12",
     "prop-types": "^15.7.2",
