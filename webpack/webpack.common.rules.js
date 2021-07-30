@@ -28,25 +28,17 @@ module.exports = function getRules(env) {
     },
     {
       test: /\.(ttf|eot|woff|woff2)$/,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: './fonts/[name].[contenthash].[ext]',
-          },
-        }
-      ]
+      type: 'asset/resource',
+      generator: {
+        filename: './fonts/[name].[contenthash][ext]',
+      },
     },
     {
       test: /\.(svg|gif|png|jpg)$/,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: './images/[name].[contenthash].[ext]',
-          },
-        }
-      ]
+      type: 'asset/resource',
+      generator: {
+        filename: './images/[name].[contenthash][ext]',
+      },
     },
     {
       test: /\.md$/i,
