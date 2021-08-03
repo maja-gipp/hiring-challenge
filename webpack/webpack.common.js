@@ -1,7 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const node = require('./webpack.common.node.js');
 const resolve = require('./webpack.common.resolve.js').resolve;
 
 module.exports = {
@@ -38,6 +37,5 @@ module.exports = {
         }
       }
     }
-  },
-  node
+  }
 };
