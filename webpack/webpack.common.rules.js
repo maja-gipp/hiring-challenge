@@ -73,6 +73,10 @@ module.exports = function getRules(env) {
         },
         'less-loader'
       ]
-    }
+    },
+    {
+      resourceQuery: /raw/,
+      type: 'asset/source',
+    },
   ];
 };
