@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Button, Card, Heading, Column, List, Row } from "~gui-library";
+import { Card, Heading, Column, List, Row, Spinner } from "~gui-library";
 import { sitesLoaded } from "~store/entities/sites/sites";
-import styles from "./site-details.module.less";
 import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
 const SiteDetails = ({ siteId, list, loading, sitesLoaded }) => {
   console.log(list);
@@ -21,17 +21,16 @@ const SiteDetails = ({ siteId, list, loading, sitesLoaded }) => {
         },
       };
     });
+  useEffect(() => {
+    sitesLoaded();
+  }, []);
   return (
-    <Card heading={<Heading>List of oil sites {siteId}</Heading>}>
+    <Card
+      heading={
+        <Heading>List of oil sites {loading && <Spinner dark tiny />}</Heading>
+      }
+    >
       <Row>
-        <Column width={200}>
-          <Button
-            label="Load sites"
-            onClick={sitesLoaded}
-            loading={loading}
-            disabled={loading}
-          />
-        </Column>
         <Column>
           <List
             list={{
