@@ -1,16 +1,20 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Button, Card, Heading, Column, Row} from '~gui-library';
-import {sitesLoaded} from "~store/entities/sites/sites";
-import styles from './sites.module.less';
+import React from "react";
+import { connect } from "react-redux";
+import { Button, Card, Heading, Column, List, Row } from "~gui-library";
+import { sitesLoaded } from "~store/entities/sites/sites";
+import styles from "./sites.module.less";
 
-const Sites = ({list, loading, sitesLoaded}) => {
+const Sites = ({ list, loading, sitesLoaded }) => {
+  console.log(list);
+  const items = list.map((site) => {
+    return {
+      id: site.id,
+      name: site.name,
+      details: site.country,
+    };
+  });
   return (
-    <Card
-      heading={
-        <Heading>List of oil sites</Heading>
-      }
-    >
+    <Card heading={<Heading>List of oil sites</Heading>}>
       <Row>
         <Column width={200}>
           <Button
@@ -21,39 +25,29 @@ const Sites = ({list, loading, sitesLoaded}) => {
           />
         </Column>
         <Column>
-          <div className={styles.sitesList}>
-            {list.length ? (
-              <ul>
-                {list.map((site, i) => (
-                  <li key={i}>
-                    {site.name}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <em>None loaded</em>
-            )}
-          </div>
+          <List
+            list={{
+              items,
+            }}
+            noHeader
+          />
         </Column>
       </Row>
     </Card>
   );
-}
+};
 
-const mapStateToProps = ({entities}) => {
-  const {sites} = entities;
+const mapStateToProps = ({ entities }) => {
+  const { sites } = entities;
   return {
     loading: sites.loading,
-    list: sites.list
-  }
+    list: sites.list,
+  };
 };
 
 const mapDispatchToProps = {
   sitesLoaded,
 };
 
-const ConnectedSites = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Sites);
-export {ConnectedSites as Sites};
+const ConnectedSites = connect(mapStateToProps, mapDispatchToProps)(Sites);
+export { ConnectedSites as Sites };
