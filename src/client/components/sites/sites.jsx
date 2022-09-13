@@ -3,14 +3,20 @@ import { connect } from "react-redux";
 import { Button, Card, Heading, Column, List, Row } from "~gui-library";
 import { sitesLoaded } from "~store/entities/sites/sites";
 import styles from "./sites.module.less";
+import { useHistory } from "react-router-dom";
 
 const Sites = ({ list, loading, sitesLoaded }) => {
   console.log(list);
+  let history = useHistory();
   const items = list.map((site) => {
     return {
       id: site.id,
       name: site.name,
       details: site.country,
+      onClick: () => {
+        console.log(site.id);
+        history.push(`/sites/${site.id}`);
+      },
     };
   });
   return (
