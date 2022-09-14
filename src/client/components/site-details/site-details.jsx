@@ -8,33 +8,31 @@ import { useEffect } from "react";
 const SiteDetails = ({ siteId, list, loading, sitesLoaded }) => {
   console.log(list);
   let history = useHistory();
-  const items = list
-    .filter((site) => site.id === siteId)
-    .map((site) => {
+  const site = list.find((site) => site.id === siteId);
+  const oilRigs =
+    site?.oilRigs.map((oilRigId) => {
       return {
-        id: site.id,
-        name: site.name,
-        details: site.country,
-        onClick: () => {
-          console.log(site.id);
-          history.push(`/sites/${site.id}`);
-        },
+        id: oilRigId,
+        name: oilRigId,
+        details: oilRigId,
       };
-    });
+    }) ?? [];
   useEffect(() => {
     sitesLoaded();
   }, []);
   return (
     <Card
       heading={
-        <Heading>List of oil sites {loading && <Spinner dark tiny />}</Heading>
+        <Heading>Site details {loading && <Spinner dark tiny />}</Heading>
       }
     >
       <Row>
         <Column>
+          <h1>{site?.name}</h1>
+          <p>{site?.country}</p>
           <List
             list={{
-              items,
+              items: oilRigs,
             }}
             noHeader
           />
