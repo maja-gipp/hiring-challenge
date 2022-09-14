@@ -2,24 +2,37 @@ import React from "react";
 import { connect } from "react-redux";
 import { Card, Heading, Column, List, Row, Spinner } from "~gui-library";
 import { sitesLoaded } from "~store/entities/sites/sites";
-import { useHistory } from "react-router-dom";
 import { useEffect } from "react";
+import { oilRigsLoaded } from "~client/store/entities/oil-rigs/oil-rigs";
 
-const SiteDetails = ({ siteId, list, loading, sitesLoaded }) => {
-  console.log(list);
-  let history = useHistory();
-  const site = list.find((site) => site.id === siteId);
-  const oilRigs =
+const SiteDetails = ({
+  siteId,
+  sites,
+  oilRigs,
+  sitesLoaded,
+  oilRigsLoaded,
+}) => {
+  const site = sites.list.find((site) => site.id === siteId);
+  const siteOilRigs =
     site?.oilRigs.map((oilRigId) => {
+      const rig = oilRigs.list.find((oilRig) => oilRig.id === oilRigId);
+      if (rig === undefined) {
+        return {
+          id: 0,
+          name: "unknown",
+        };
+      }
       return {
-        id: oilRigId,
-        name: oilRigId,
-        details: oilRigId,
+        id: rig.id,
+        name: rig.name,
+        details: rig.manufacturer,
       };
     }) ?? [];
   useEffect(() => {
     sitesLoaded();
+    oilRigsLoaded();
   }, []);
+  const loading = sites.loading || oilRigs.loading;
   return (
     <Card
       heading={
@@ -32,7 +45,7 @@ const SiteDetails = ({ siteId, list, loading, sitesLoaded }) => {
           <p>{site?.country}</p>
           <List
             list={{
-              items: oilRigs,
+              items: siteOilRigs,
             }}
             noHeader
           />
@@ -43,15 +56,16 @@ const SiteDetails = ({ siteId, list, loading, sitesLoaded }) => {
 };
 
 const mapStateToProps = ({ entities }) => {
-  const { sites } = entities;
+  const { sites, oilRigs } = entities;
   return {
-    loading: sites.loading,
-    list: sites.list,
+    sites,
+    oilRigs,
   };
 };
 
 const mapDispatchToProps = {
   sitesLoaded,
+  oilRigsLoaded,
 };
 
 const ConnectedSiteDetails = connect(
