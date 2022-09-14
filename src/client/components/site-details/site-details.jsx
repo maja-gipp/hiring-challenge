@@ -4,6 +4,7 @@ import { Card, Heading, Column, List, Row, Spinner } from "~gui-library";
 import { sitesLoaded } from "~store/entities/sites/sites";
 import { useEffect } from "react";
 import { oilRigsLoaded } from "~client/store/entities/oil-rigs/oil-rigs";
+import { Link } from "react-router-dom";
 
 const SiteDetails = ({
   siteId,
@@ -36,11 +37,15 @@ const SiteDetails = ({
   return (
     <Card
       heading={
-        <Heading>Site details {loading && <Spinner dark tiny />}</Heading>
+        <Heading>
+          Site details
+          {loading && <Spinner dark tiny />}
+        </Heading>
       }
     >
       <Row>
         <Column>
+          <Link to={"/"}>Go back</Link>
           <h1>{site?.name}</h1>
           <p>{site?.country}</p>
           <List
