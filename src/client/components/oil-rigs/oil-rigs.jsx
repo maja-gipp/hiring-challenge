@@ -1,19 +1,44 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 import { connect } from "react-redux";
-import { Card, Heading, Column, Row, List, Spinner } from "~gui-library";
+import {
+  Card,
+  Heading,
+  Column,
+  Row,
+  List,
+  Spinner,
+  Button,
+} from "~gui-library";
 import { oilRigsLoaded } from "~store/entities/oil-rigs/oil-rigs";
+const sortByName = (list, order) => {
+  if (order === "descending") {
+    return [...list].sort((a, b) => (a.name < b.name ? 1 : -1));
+  }
+  if (order === "ascending") {
+    return [...list].sort((a, b) => (a.name > b.name ? 1 : -1));
+  }
+  return list;
+};
 
 const OilRigs = ({ list, loading, oilRigsLoaded }) => {
-  const items = list.map((oilRigs) => {
+  const [order, setOrder] = useState("original");
+  const items = sortByName(list, order).map((oilRig) => {
     return {
-      id: oilRigs.id,
-      name: oilRigs.name,
-      details: oilRigs.country,
+      id: oilRig.id,
+      name: oilRig.name,
+      details: oilRig.country,
     };
   });
   useEffect(() => {
     oilRigsLoaded();
   }, []);
+  const handleSortDescending = () => {
+    setOrder("descending");
+  };
+  const handleSortAscending = () => {
+    setOrder("ascending");
+  };
   return (
     <Card
       heading={
@@ -22,6 +47,8 @@ const OilRigs = ({ list, loading, oilRigsLoaded }) => {
     >
       <Row>
         <Column>
+          <Button onClick={handleSortDescending} label="sort descending" />
+          <Button onClick={handleSortAscending} label="sort ascending" />
           <List
             list={{
               items,

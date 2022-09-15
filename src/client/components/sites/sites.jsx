@@ -1,26 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Card, Heading, Column, List, Row, Spinner } from "~gui-library";
+import { Card, Heading, Column, List, Row, Spinner, Button } from "~gui-library";
 import { sitesLoaded } from "~store/entities/sites/sites";
-import { useHistory } from "react-router-dom";
+
+const sortByName = (list, order) => {
+  if (order === "descending") {
+    return [...list].sort((a, b) => (a.name > b.name ? 1 : -1));
+  }
+  if (order === "ascending") {
+    return [...list].sort((a, b) => (a.name < b.name ? 1 : -1));
+  }
+  return list;
+};
 
 const Sites = ({ list, loading, sitesLoaded }) => {
-  console.log(list);
-  let history = useHistory();
-  const items = list.map((site) => {
+  const [order, setOrder] = useState("original");
+  const items = sortByName(list, order).map((site) => {
     return {
       id: site.id,
       name: site.name,
       details: site.country,
-      onClick: () => {
-        console.log(site.id);
-        history.push(`/sites/${site.id}`);
-      },
     };
   });
   useEffect(() => {
     sitesLoaded();
   }, []);
+  const handleSortDescending = () => {
+    setOrder("descending");
+  };
+  const handleSortAscending = () => {
+    setOrder("ascending");
+  };
   return (
     <Card
       heading={
@@ -29,6 +39,8 @@ const Sites = ({ list, loading, sitesLoaded }) => {
     >
       <Row>
         <Column>
+          <Button onClick={handleSortDescending} label="sort descending" />
+          <Button onClick={handleSortAscending} label="sort ascending" />
           <List
             list={{
               items,
