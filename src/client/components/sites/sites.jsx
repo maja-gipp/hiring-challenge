@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Card, Heading, Column, List, Row, Spinner, Button } from "~gui-library";
+import {
+  Card,
+  Heading,
+  Column,
+  List,
+  Row,
+  Spinner,
+  Button,
+} from "~gui-library";
 import { sitesLoaded } from "~store/entities/sites/sites";
+import { useHistory } from "react-router-dom";
 
 const sortByName = (list, order) => {
   if (order === "descending") {
@@ -14,12 +23,16 @@ const sortByName = (list, order) => {
 };
 
 const Sites = ({ list, loading, sitesLoaded }) => {
+  let history = useHistory();
   const [order, setOrder] = useState("original");
   const items = sortByName(list, order).map((site) => {
     return {
       id: site.id,
       name: site.name,
       details: site.country,
+      onClick: () => {
+        history.push(`/sites/${site.id}`);
+      },
     };
   });
   useEffect(() => {
