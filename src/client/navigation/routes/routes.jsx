@@ -14,7 +14,7 @@ export const Routes = () => {
       <NavigationBar />
       <Route path="/" exact component={Main} />
       <Route path="/oil-rigs" component={OilRigsView} />
-      <Route path="/sites/:siteId" component={SiteDetailsView} />
+      <Route path="/oil-sites/:siteId" component={SiteDetailsView} />
       <Route path="/sites-chart" component={SitesChartView} />
     </Router>
   );

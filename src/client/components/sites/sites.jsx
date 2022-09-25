@@ -22,7 +22,7 @@ const Sites = ({ list, loading, sitesLoaded }) => {
       name: site.name,
       details: site.country,
       onClick: () => {
-        history.push(`/sites/${site.id}`);
+        history.push(`/oil-sites/${site.id}`);
       },
     };
   });
