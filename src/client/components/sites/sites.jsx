@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 import { sortByName } from "~client/utils/sorting";
 import { siteDetailsRoute } from "~client/navigation/routing";
 
-const Sites = ({ list, loading, sitesLoaded }) => {
+const Sites = ({ list, loading, sitesLoaded, error }) => {
   let history = useHistory();
   const [order, setOrder] = useState("original");
   const items = sortByName(list, order).map((site) => {
@@ -42,6 +42,7 @@ const Sites = ({ list, loading, sitesLoaded }) => {
         <Heading>List of oil sites {loading && <Spinner dark tiny />}</Heading>
       }
     >
+      {error && <p>Unexpected error</p>}
       <Row>
         <Column>
           <Button onClick={handleSortDescending} label="sort descending" />
@@ -63,6 +64,7 @@ const mapStateToProps = ({ entities }) => {
   return {
     loading: sites.loading,
     list: sites.list,
+    error: sites.error,
   };
 };
 
