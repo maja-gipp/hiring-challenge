@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
+import { sortByName } from "~client/utils/sorting";
 import {
   Card,
   Heading,
@@ -11,15 +12,7 @@ import {
   Button,
 } from "~gui-library";
 import { oilRigsLoaded } from "~store/entities/oil-rigs/oil-rigs";
-const sortByName = (list, order) => {
-  if (order === "descending") {
-    return [...list].sort((a, b) => (a.name < b.name ? 1 : -1));
-  }
-  if (order === "ascending") {
-    return [...list].sort((a, b) => (a.name > b.name ? 1 : -1));
-  }
-  return list;
-};
+
 
 const OilRigs = ({ list, loading, oilRigsLoaded }) => {
   const [order, setOrder] = useState("original");
