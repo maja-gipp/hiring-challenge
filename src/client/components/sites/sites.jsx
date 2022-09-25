@@ -12,6 +12,7 @@ import {
 import { sitesLoaded } from "~store/entities/sites/sites";
 import { useHistory } from "react-router-dom";
 import { sortByName } from "~client/utils/sorting";
+import { siteDetailsRoute } from "~client/navigation/routing";
 
 const Sites = ({ list, loading, sitesLoaded }) => {
   let history = useHistory();
@@ -22,7 +23,7 @@ const Sites = ({ list, loading, sitesLoaded }) => {
       name: site.name,
       details: site.country,
       onClick: () => {
-        history.push(`/oil-sites/${site.id}`);
+        history.push(siteDetailsRoute.getUrl(site.id));
       },
     };
   });

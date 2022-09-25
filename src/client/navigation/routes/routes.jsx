@@ -7,6 +7,7 @@ import { Main } from "../../views/main/main";
 import { OilRigsView } from "~client/views/oil-rigs-view/oil-rigs-view";
 import { SiteDetailsView } from "~client/views/site-details-view/site-details-view";
 import { SitesChartView } from "~client/views/sites-chart-view/sites-chart-view";
+import { siteDetailsRoute } from "../routing";
 
 export const Routes = () => {
   return (
@@ -14,7 +15,7 @@ export const Routes = () => {
       <NavigationBar />
       <Route path="/" exact component={Main} />
       <Route path="/oil-rigs" component={OilRigsView} />
-      <Route path="/oil-sites/:siteId" component={SiteDetailsView} />
+      <Route path={siteDetailsRoute.getPath()} component={SiteDetailsView} />
       <Route path="/sites-chart" component={SitesChartView} />
     </Router>
   );
