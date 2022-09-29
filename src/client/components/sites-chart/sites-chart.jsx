@@ -1,30 +1,42 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {Card, Heading, Spinner} from '~gui-library';
-import {sitesLoaded} from "~store/entities/sites/sites";
-import { useEffect } from 'react';
-import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Bar, Tooltip, Legend } from 'recharts';
+import React from "react";
+import { connect } from "react-redux";
+import { Card, Heading, Spinner } from "~gui-library";
+import { sitesLoaded } from "~store/entities/sites/sites";
+import { useEffect } from "react";
+import {
+  ResponsiveContainer,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Bar,
+  Tooltip,
+  Legend,
+} from "recharts";
 
-const SitesChart = ({sites, sitesLoaded}) => {
-
+const SitesChart = ({ sites, sitesLoaded }) => {
   useEffect(() => {
     sitesLoaded();
-  }, [])
+  }, []);
 
   const isLoading = sites.loading;
 
-  const data = sites.list.map(site => {
+  const data = sites.list.map((site) => {
     return {
       name: site.name,
-      oilRigs: site.oilRigs.length
-    }
-  })
+      oilRigs: site.oilRigs.length,
+    };
+  });
 
   return (
     <Card heading={<Heading>Oil rigs per site</Heading>}>
-      {isLoading 
-        ? <Spinner /> 
-        : (<ResponsiveContainer height={500}><BarChart
+      {sites.error ? (
+        <p>Unexpected error</p>
+      ) : isLoading ? (
+        <Spinner />
+      ) : (
+        <ResponsiveContainer height={500}>
+          <BarChart
             data={data}
             margin={{
               top: 5,
@@ -39,17 +51,18 @@ const SitesChart = ({sites, sitesLoaded}) => {
             <Tooltip />
             <Legend />
             <Bar dataKey="oilRigs" name="Oil rigs" fill="#8884d8" />
-          </BarChart></ResponsiveContainer>)
-      }
+          </BarChart>
+        </ResponsiveContainer>
+      )}
     </Card>
   );
-}
+};
 
-const mapStateToProps = ({entities}) => {
-  const {sites} = entities;
+const mapStateToProps = ({ entities }) => {
+  const { sites } = entities;
   return {
     sites,
-  }
+  };
 };
 
 const mapDispatchToProps = {
@@ -58,6 +71,6 @@ const mapDispatchToProps = {
 
 const ConnectedSitesChart = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(SitesChart);
-export {ConnectedSitesChart as SitesChart};
+export { ConnectedSitesChart as SitesChart };

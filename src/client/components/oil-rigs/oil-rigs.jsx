@@ -13,8 +13,7 @@ import {
 } from "~gui-library";
 import { oilRigsLoaded } from "~store/entities/oil-rigs/oil-rigs";
 
-
-const OilRigs = ({ list, loading, oilRigsLoaded }) => {
+const OilRigs = ({ list, loading, oilRigsLoaded, error }) => {
   const [order, setOrder] = useState("original");
   const items = sortByName(list, order).map((oilRig) => {
     return {
@@ -38,6 +37,7 @@ const OilRigs = ({ list, loading, oilRigsLoaded }) => {
         <Heading>List of oil rigs {loading && <Spinner dark tiny />}</Heading>
       }
     >
+      {error && <p>Unexpected error</p>}
       <Row>
         <Column>
           <Button onClick={handleSortDescending} label="sort descending" />
@@ -59,6 +59,7 @@ const mapStateToProps = ({ entities }) => {
   return {
     loading: oilRigs.loading,
     list: oilRigs.list,
+    error: oilRigs.error,
   };
 };
 

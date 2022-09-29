@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { TopBar } from "~gui-library";
 import Logo from "../../images/logo@2x.png";
+import { oilRigsRoute } from "../routing";
 
 export const NavigationBar = () => {
   const history = useHistory();
@@ -12,7 +13,7 @@ export const NavigationBar = () => {
   });
 
   const oilRigsMatch = useRouteMatch({
-    path: "/oil-rigs",
+    path: oilRigsRoute.getUrl(),
   });
 
   const sitesChartMatch = useRouteMatch({
@@ -35,7 +36,7 @@ export const NavigationBar = () => {
         {
           active: oilRigsMatch !== null,
           label: "Oil rigs",
-          onClick: () => history.push("/oil-rigs"),
+          onClick: () => history.push(oilRigsRoute.getUrl()),
           type: "Link",
         },
         {
