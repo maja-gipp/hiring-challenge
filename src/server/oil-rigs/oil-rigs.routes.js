@@ -4,4 +4,5 @@ export default (server) => {
   const oilRigsController = new OilRigsController();
   server.get('/api/oil-rigs', oilRigsController.getOilRigs);
   server.post('/api/oil-rigs', oilRigsController.addOilRig);
+  server.get('/api/oil-rigs/:id', oilRigsController.getOilRig);
 };

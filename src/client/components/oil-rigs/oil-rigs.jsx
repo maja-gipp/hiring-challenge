@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { connect } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { sortByName } from "~client/utils/sorting";
 import {
   Card,
@@ -14,12 +15,16 @@ import {
 import { oilRigsLoaded } from "~store/entities/oil-rigs/oil-rigs";
 
 const OilRigs = ({ list, loading, oilRigsLoaded, error }) => {
+  const history = useHistory();
   const [order, setOrder] = useState("original");
   const items = sortByName(list, order).map((oilRig) => {
     return {
       id: oilRig.id,
       name: oilRig.name,
       details: oilRig.country,
+      onClick: () => {
+        history.push("/oil-rig-details/ " + oilRig.id);
+      },
     };
   });
   useEffect(() => {

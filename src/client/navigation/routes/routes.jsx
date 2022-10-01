@@ -10,6 +10,7 @@ import { siteDetailsRoute } from "../routing";
 import { oilRigsRoute } from "../routing";
 import { sitesChartRoute } from "../routing";
 import { Page } from "~gui-library";
+import { OilRigDetails } from "~client/components/oil-rig-details/oil-rig-details";
 
 export const Routes = () => {
   return (
@@ -20,6 +21,7 @@ export const Routes = () => {
         <Route path={oilRigsRoute.getPath()} component={OilRigsView} />
         <Route path={siteDetailsRoute.getPath()} component={SiteDetailsView} />
         <Route path={sitesChartRoute.getPath()} component={SitesChartView} />
+        <Route path="/oil-rig-details/:id" component={OilRigDetails}/>
         <Route
           path="*"
           component={() => {
